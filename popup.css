@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Colfax';
+    font-style: normal;
+    font-weight: 400;
+    src: url("./assets/ColfaxAIRegular.otf");
+}
+
+body {
+    font-family: 'Colfax';
+    height: 350px;
+    width: 350px;
+}
+
+#isTraining {
+    display: none;
+}
+
+#input{
+    resize:both;
+}

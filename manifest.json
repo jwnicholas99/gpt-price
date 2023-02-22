@@ -1,0 +1,12 @@
+{
+    "name": "ChatGPT Pricing Calculator",
+    "version": "1.0.0",
+    "description": "quick and convenient pricing calculator for using ChatGPT",
+    "manifest_version": 3,
+    "author": "jwnicholas99",
+    "action":{
+        "default_popup": "popup.html",
+        "default_title": "ChatGPT Pricing Calculator"
+    },
+    "permissions": ["tabs"]
+}
