@@ -5,16 +5,122 @@
     src: url("./assets/ColfaxAIRegular.otf");
 }
 
+@font-face {
+    font-family: 'Inter';
+    src: url("./assets/fonts/Inter/Inter-VariableFont.ttf");
+}
+
 body {
-    font-family: 'Colfax';
-    height: 350px;
+    font-family: 'Inter';
+    height: 430px;
     width: 350px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* Header */
+#headerContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 43px;
+}
+
+#headerLeft {
+    margin-left: 12px;
+    margin-top: 10px;
+}
+
+#headerRight {
+    margin-right: 14px;
+    margin-top: 10px;
+}
+
+#logo {
+    height: 23px;
+    width: 23px;
+}
+
+#appName {
+    font-weight: 500;
+    color: #555555;
+    margin-left: 3px;
+    font-size: 16px;
+}
+
+/* Body of popup */
+#bodyContainer {
+    width: 100%;
+    height: 100%;
+    background-color: #EEEAF3;
+    padding: 15px 26px 15px 26px;
 }
 
 #isTraining {
     display: none;
+    margin-top: 3px;
 }
 
-#input{
-    resize:both;
+.fieldHeader {
+    color: #6d6d6d;
+    font-weight: 300;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#maxLenTop {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7px;
+    align-items: flex-end;
+}
+
+#maxLenInput {
+    border:none;
+    border-bottom: 2px solid #1890ff;
+    margin-bottom: 3px;
+    outline: none;
+    background-color: #F0F0F0;
+    width: 43px;
+    height: 20px;
+    text-align: right;
+}
+
+#maxLenRange {
+    margin-top: 4px;
+}
+
+#textInput{
+    resize: none;
+}
+
+#textInput::placeholder {
+    color: #b5b3b3;
+}
+
+#statsContainer {
+    display: flex;
+    margin-top: 7px;
+}
+
+.tokenizer-stat {
+    margin-right: 20px;
+    color: #555555;
+    font-weight: 500;
+}
+
+.tokenizer-stat-value {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.pricing-stat {
+    font-size: 18px;
+    font-weight: 500;
+    width: 100%;
+    background-color: #267DFF;
+    color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px 5px 5px 10px;
 }

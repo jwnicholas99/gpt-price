@@ -14,55 +14,70 @@
         <title>ChatGPT Pricing Calculator</title>
     </head>
     <body>
-        ChatGPT Pricing Calculator
+        <!-- Logo, Name and Cross -->
+        <div id="headerContainer">
+            <div id="headerLeft">
+                <img src="assets/images/logo.png" id="logo">
+                <span id="appName">price.gpt</span>
+            </div>
+            <div id="headerRight">&#x2715;</div>
+        </div>
+
+        <div id="bodyContainer">
         <!-- Base Model or Fine-tuned Model -->
-        <div>
-            <div class="form-check form-check-inline">
-                <input type="radio" class="form-check-input" name="isFineTune" id="baseModel" checked="">
-                <label class="form-check-label" for="baseModel">Base Model</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input type="radio" class="form-check-input" name="isFineTune" id="fineTunedModel">
-                <label class="form-check-label" for="fineTunedModel">Fine-tuned Model</label>
-            </div>
+            <div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="isFineTune" id="baseModel" checked="">
+                    <label class="form-check-label" for="baseModel">Base Model</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="isFineTune" id="fineTunedModel">
+                    <label class="form-check-label" for="fineTunedModel">Fine-tuned Model</label>
+                </div>
 
-            <!-- If Fine-tuned model, is it training or usage -->
-            <div class="form-check form-switch" id="isTraining">
-                <input class="form-check-input" type="checkbox" id="switch">
-                <label class="form-check-label" for="switch">Training</label>
-            </div>
+                <!-- If Fine-tuned model, is it training or usage -->
+                <div class="form-check form-switch" id="isTraining">
+                    <input class="form-check-input" type="checkbox" id="switch">
+                    <label class="form-check-label" for="switch">Training</label>
+                </div>
 
-            <!-- Model -->
-            <select class="form-select" id="modelInput">
-                <option value="ada">Ada</option>
-                <option value="babbage">Babbage</option>
-                <option value="curie">Curie</option>
-                <option value="davinci" selected>Davinci</option>
-            </select>
+                <!-- Model -->
+                <label class="fieldHeader">Model</label>
+                <select class="form-select" id="modelInput">
+                    <option class="modelOption" value="ada">Ada</option>
+                    <option class="modelOption" value="babbage">Babbage</option>
+                    <option class="modelOption" value="curie">Curie</option>
+                    <option class="modelOption" value="davinci" selected>Davinci</option>
+                </select>
 
-            <!-- Max length (depends on model) -->
-            <label for="customRange">Maximum Length</label>
-            <input type="text" class="form-control" value="256" id="maxLenInput">
-            <input type="range" class="form-range" min="1" max="4000" step="1" value="256" id="maxLenRange">
-            </div>
+                <!-- Max length (depends on model) -->
+                <div id="maxLenTop">
+                    <label class="fieldHeader">Max Length (in Tokens)</label>
+                    <input type="text" value="256" id="maxLenInput">
+                </div>
+                <input type="range" class="form-range" min="1" max="4000" step="1" value="256" id="maxLenRange">
+                </div>
 
-            <!-- Input -->
-            <input type="text" class="form-control" id="textInput" placeholder="Input to ChatGPT">
+                <!-- Input -->
+                <label class="fieldHeader">Input to ChatGPT/GPT-3</label>
+                <textarea class="form-control" id="textInput" rows="3" placeholder="O'Mighty ChatGPT..."></textarea>
 
-            <!-- Num chars and tokens -->
-            <div class="tokenizer-stat">
-                <div class="tokenizer-stat-title">Tokens</div>
-                <div class="tokenizer-stat-value" id="numTokens">0</div>
-            </div>
-            <div class="tokenizer-stat">
-                <div class="tokenizer-stat-title">Characters</div>
-                <div class="tokenizer-stat-value" id="numChars">0</div>
-            </div>
+                <!-- Num chars and tokens -->
+                <div id="statsContainer">
+                    <div class="tokenizer-stat">
+                        <div class="tokenizer-stat-title">Tokens</div>
+                        <div class="tokenizer-stat-value" id="numTokens">0</div>
+                    </div>
+                    <div class="tokenizer-stat">
+                        <div class="tokenizer-stat-title">Characters</div>
+                        <div class="tokenizer-stat-value" id="numChars">0</div>
+                    </div>
+                </div>
 
-            <!-- Estimated pricing range-->
-            <div class="pricing-stat">
-                <div class="pricing-stat-title">Price</div>
-                <div class="tokenizer-stat-value">$<span id="minPrice">0.00</span> - $<span id="maxPrice">0.00</span></div>
+                <!-- Estimated pricing range-->
+                <div class="pricing-stat">
+                    Price: $<span id="minPrice">0.00</span> - $<span id="maxPrice">0.00</span>
+                </div>
             </div>
         </div>
     </body>

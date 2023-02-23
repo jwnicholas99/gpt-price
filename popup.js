@@ -29,7 +29,8 @@ const maxLenInput = document.getElementById('maxLenInput');
 const maxLenRange = document.getElementById('maxLenRange');
 
 function handleMaxLenInputChange(event){
-    maxLenRange.value = event.target.value;
+    maxLenInput.value = Math.min(Math.max(event.target.value, 1), maxLenRange.max);
+    maxLenRange.value = maxLenInput.value;
 }
 
 function handleMaxLenRangeChange(event){
