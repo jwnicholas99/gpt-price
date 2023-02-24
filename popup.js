@@ -1,10 +1,18 @@
 // Define addUpdatePrice
-function addUpdatePrice(fn){
+function addUpdatePriceAndTooLong(fn){
     return function(event){
         fn(event);
-        updatePrice()
+        updatePrice();
+        checkTooLong();
     }
 }
+
+function handleCloseBtnClick(){
+    window.close();
+}
+
+const closeBtn = document.getElementById('closeBtn');
+closeBtn.addEventListener('click', handleCloseBtnClick);
 
 // Link isFineTune radio btns with isTraining toggle switch
 const isTraining = document.getElementById('isTraining');
@@ -19,10 +27,10 @@ function handleModelRadioClick() {
 
 const radioBtns = document.querySelectorAll('input[name="isFineTune"]');
 radioBtns.forEach(radio => {
-  radio.addEventListener('click', addUpdatePrice(handleModelRadioClick));
+  radio.addEventListener('click', addUpdatePriceAndTooLong(handleModelRadioClick));
 });
 
-isTraining.addEventListener('click', addUpdatePrice(handleModelRadioClick));
+isTraining.addEventListener('click', addUpdatePriceAndTooLong(handleModelRadioClick));
 
 // Link max length text input with max length range input
 const maxLenInput = document.getElementById('maxLenInput');
@@ -37,8 +45,8 @@ function handleMaxLenRangeChange(event){
     maxLenInput.value = event.target.value;
 }
 
-maxLenInput.addEventListener('input', addUpdatePrice(handleMaxLenInputChange));
-maxLenRange.addEventListener('input', addUpdatePrice(handleMaxLenRangeChange));
+maxLenInput.addEventListener('input', addUpdatePriceAndTooLong(handleMaxLenInputChange));
+maxLenRange.addEventListener('input', addUpdatePriceAndTooLong(handleMaxLenRangeChange));
 
 // Link model to max length range
 const modelInput = document.getElementById('modelInput');
@@ -52,20 +60,44 @@ function handleModelInputChange(event){
     maxLenInput.value = maxLenRange.value;
 }
 
-modelInput.addEventListener('input', addUpdatePrice(handleModelInputChange))
+modelInput.addEventListener('input', addUpdatePriceAndTooLong(handleModelInputChange))
 
 // Calculates number of characters, number of tokens and price
 const textInput = document.getElementById('textInput');
 const numChars = document.getElementById('numChars');
 const numTokens = document.getElementById('numTokens');
+const tooLong = document.getElementById('tooLong');
+
+function checkTooLong(){
+    const tokenCount = textInput.value.length / 4;
+    
+    if(tokenCount > maxLenInput.value){
+        tooLong.style.display = "block";
+    } else {
+        tooLong.style.display = "none";
+    }
+}
 
 function handleTextInputChange(event){
     const inputLen = event.target.value.length
+    const tokenCount = inputLen / 4;
+
     numChars.innerHTML = inputLen;
-    numTokens.innerHTML = inputLen / 4;
+    numTokens.innerHTML = tokenCount;
 }
 
-textInput.addEventListener('input', addUpdatePrice(handleTextInputChange))
+textInput.addEventListener('input', addUpdatePriceAndTooLong(handleTextInputChange))
+
+const clearBtn = document.getElementById('clearBtn');
+
+function handleClearBtnClick() {
+    textInput.value = "";
+    numChars.innerHTML = 0;
+    numTokens.innerHTML = 0;
+    tooLong.style.display = "none";
+}
+
+clearBtn.addEventListener('click', addUpdatePriceAndTooLong(handleClearBtnClick))
 
 // Calculate and change price
 const minPrice = document.getElementById('minPrice');
@@ -106,6 +138,6 @@ function updatePrice(){
     } else {
         var pricingDict = baseModelPricing;
     }
-    minPrice.innerHTML = calcPrice(numTokens.innerHTML, pricingDict[modelInput.value])
-    maxPrice.innerHTML = calcPrice(maxLenInput.value, pricingDict[modelInput.value])
+    maxPrice.innerHTML = calcPrice(maxLenInput.value, pricingDict[modelInput.value]);
+    minPrice.innerHTML = Math.min(calcPrice(numTokens.innerHTML, pricingDict[modelInput.value]), maxPrice.innerHTML);
 }

@@ -20,7 +20,7 @@
                 <img src="assets/images/logo.png" id="logo">
                 <span id="appName">price.gpt</span>
             </div>
-            <div id="headerRight">&#x2715;</div>
+            <div id="headerRight"><span id="closeBtn">&#x2715;</span></div>
         </div>
 
         <div id="bodyContainer">
@@ -62,15 +62,24 @@
                 <label class="fieldHeader">Input to ChatGPT/GPT-3</label>
                 <textarea class="form-control" id="textInput" rows="3" placeholder="O'Mighty ChatGPT..."></textarea>
 
-                <!-- Num chars and tokens -->
-                <div id="statsContainer">
-                    <div class="tokenizer-stat">
-                        <div class="tokenizer-stat-title">Tokens</div>
-                        <div class="tokenizer-stat-value" id="numTokens">0</div>
+                <!-- Num chars and tokens and clear btn -->
+                <div id="statsAndClear">
+                    <div id="statsContainer">
+                        <div class="tokenizer-stat">
+                            <div class="tokenizer-stat-title">Tokens</div>
+                            <div class="tokenizer-stat-value" id="numTokens">0</div>
+                        </div>
+                        <div class="tokenizer-stat">
+                            <div class="tokenizer-stat-title">Characters</div>
+                            <div class="tokenizer-stat-value" id="numChars">0</div>
+                        </div>
                     </div>
-                    <div class="tokenizer-stat">
-                        <div class="tokenizer-stat-title">Characters</div>
-                        <div class="tokenizer-stat-value" id="numChars">0</div>
+                    
+                    <div id="clearRight">
+                        <div id="tooLong">Too long</div>
+                        <div id="clearBtnContainer">
+                            <button type="button" class="btn btn-outline-primary btn-sm" id="clearBtn">clear</button>
+                        </div>
                     </div>
                 </div>
 

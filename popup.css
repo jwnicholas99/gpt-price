@@ -48,6 +48,17 @@ body {
     font-size: 16px;
 }
 
+#closeBtn {
+    cursor: pointer;
+    padding: 2px 5px;
+    border-radius: 50%;
+    transition-duration: 0.3s;
+}
+
+#closeBtn:hover {
+    background-color: #EEEAF3;
+}
+
 /* Body of popup */
 #bodyContainer {
     width: 100%;
@@ -80,7 +91,7 @@ body {
     border-bottom: 2px solid #1890ff;
     margin-bottom: 3px;
     outline: none;
-    background-color: #F0F0F0;
+    background-color: #EEEAF3;
     width: 43px;
     height: 20px;
     text-align: right;
@@ -98,13 +109,43 @@ body {
     color: #b5b3b3;
 }
 
+#statsAndClear {
+    display: flex;
+    justify-content: space-between;
+}
+
 #statsContainer {
     display: flex;
     margin-top: 7px;
 }
 
+#clearRight {
+    display: flex;
+    margin-top: 7px;
+}
+
+#tooLong {
+    display: none;
+    font-size: 13px;
+    padding: 1px 4px;
+    background-color: #DC3545;
+    color: white;
+    border-radius: 3.2px;
+    height: 23.1px;
+    margin-right: 4px;
+}
+
+#clearBtnContainer {
+}
+
+#clearBtn {
+    padding: 1px 4px;
+    font-size: 13px;
+}
+
 .tokenizer-stat {
-    margin-right: 20px;
+    margin-left: 5px;
+    margin-right: 15px;
     color: #555555;
     font-weight: 500;
 }
@@ -115,7 +156,7 @@ body {
 }
 
 .pricing-stat {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     width: 100%;
     background-color: #267DFF;
