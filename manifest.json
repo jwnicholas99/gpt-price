@@ -8,5 +8,8 @@
         "default_popup": "popup.html",
         "default_title": "ChatGPT Pricing Calculator"
     },
-    "permissions": ["tabs"]
+    "permissions": [
+        "tabs",
+        "storage"
+    ]
 }
