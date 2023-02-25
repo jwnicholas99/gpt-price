@@ -61,13 +61,16 @@ var valueKeys = [
 
 document.addEventListener("DOMContentLoaded", function() {
     // Load in model type 
-    chrome.storage.local.get(["baseModel"])
-        .then((data) => baseModel.checked = data["baseModel"]);
-    chrome.storage.local.get(["fineTunedModel"])
+    chrome.storage.local.get(["baseModel", "fineTunedModel"])
         .then((data) => {
-            fineTunedModel.checked = data["fineTunedModel"];
+            if(!("baseModel" in data) && !("fineTunedModel" in data)){
+                baseModel.checked = true;
+            } else {
+                baseModel.checked = data["baseModel"];
+                fineTunedModel.checked = data["fineTunedModel"];
+            }
             handleModelRadioClick(); // simulate clicking model type
-        })
+        });
 
     // Load in isTrainingSwitch
     chrome.storage.local.get(["isTrainingSwitch"])
@@ -212,4 +215,3 @@ function updatePrice(){
     maxPrice.innerHTML = calcPrice(maxLenInput.value, pricingDict[modelInput.value]);
     minPrice.innerHTML = Math.min(calcPrice(numTokens.innerHTML, pricingDict[modelInput.value]), maxPrice.innerHTML);
 }
-
