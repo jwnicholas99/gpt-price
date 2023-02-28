@@ -8,6 +8,13 @@ function addPostEvent(fn, saveData){
     }
 }
 
+// Define how number of tokens are counted
+function countTokens(str){
+    
+    
+    return str.length / 4;
+}
+
 function handleCloseBtnClick(){
     window.close();
 }
@@ -88,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Update num tokens, num chars and price
     const inputLen = textInput.value.length
-    const tokenCount = inputLen / 4;
+    const tokenCount = countTokens(textInput.value);
 
     numChars.innerHTML = inputLen;
     numTokens.innerHTML = tokenCount;
@@ -143,7 +150,7 @@ const numTokens = document.getElementById('numTokens');
 const tooLong = document.getElementById('tooLong');
 
 function checkTooLong(){
-    const tokenCount = textInput.value.length / 4;
+    const tokenCount = parseFloat(numTokens.innerHTML);
     
     if(tokenCount > maxLenInput.value){
         tooLong.style.display = "block";
@@ -154,7 +161,7 @@ function checkTooLong(){
 
 function handleTextInputChange(event){
     const inputLen = event.target.value.length
-    const tokenCount = inputLen / 4;
+    const tokenCount = countTokens(textInput.value);
 
     numChars.innerHTML = inputLen;
     numTokens.innerHTML = tokenCount;
